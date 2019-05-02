@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.fanl.mapper.CrawlerMapper">
+ <!-- 采取主键回填 -->
+     <insert id="insertMessage" parameterType="message"
+         useGeneratedKeys="true" keyProperty="id">
+     	insert into t_crawler(diegest,url) values(#{diegest},#{url})
+     </insert>  
+     <update id="deleteAllMessage">
+     	 truncate table t_crawler;
+     </update> 
+     <select id="selectMessageById" resultType="message" parameterType="long">
+     	select * from t_crawler where id = #{id}
+     </select>
+    
+</mapper>
